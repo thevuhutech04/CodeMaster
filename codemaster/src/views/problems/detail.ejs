@@ -1,0 +1,151 @@
+<%- contentFor('body') %>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2 class="card-title mb-0">Bài tập 1</h2>
+                    <div>
+                        <span class="badge bg-success me-2">Dễ</span>
+                        <span class="badge bg-info">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Mô tả</h5>
+                    <p>
+                        Viết một hàm JavaScript để tính tổng của hai số nguyên. Hàm này sẽ nhận vào hai tham số
+                        là hai số nguyên và trả về tổng của chúng.
+                    </p>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Yêu cầu</h5>
+                    <ul>
+                        <li>Hàm phải có tên là <code>sum</code></li>
+                        <li>Hàm phải nhận vào hai tham số là hai số nguyên</li>
+                        <li>Hàm phải trả về tổng của hai số đó</li>
+                    </ul>
+                </div>
+
+                <div class="mb-4">
+                    <h5>Ví dụ</h5>
+                    <pre class="bg-light p-3 rounded">
+Input: sum(1, 2)
+Output: 3
+
+Input: sum(-1, 1)
+Output: 0</pre>
+                </div>
+
+                <div>
+                    <h5>Giới hạn</h5>
+                    <ul>
+                        <li>Thời gian chạy: 1 giây</li>
+                        <li>Bộ nhớ: 256MB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Lời giải</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-3">
+                    <select class="form-select" id="language" onchange="changeLanguage()">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                    </select>
+                </div>
+
+                <div id="editor" class="editor-container mb-3"></div>
+
+                <div class="d-flex gap-2">
+                    <button class="btn btn-primary" id="runButton" onclick="executeCode()">
+                        <i class="fas fa-play"></i> Chạy code
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="copyCode()">
+                        <i class="fas fa-copy"></i> Copy
+                    </button>
+                    <button class="btn btn-outline-danger" onclick="resetCode()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                </div>
+
+                <div class="mt-3">
+                    <h6>Kết quả</h6>
+                    <div id="output" class="bg-light p-3 rounded">
+                        <pre class="mb-0">// Kết quả sẽ hiển thị ở đây</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Thông tin bài tập</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="fas fa-clock"></i> Thời gian: 1 giây
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-memory"></i> Bộ nhớ: 256MB
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-users"></i> 123 người đã giải
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle"></i> Tỷ lệ đúng: 85%
+                    </li>
+                    <li>
+                        <i class="fas fa-star"></i> Điểm: 100
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Bài tập liên quan</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <a href="/problems/2" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Bài tập 2</h6>
+                            <small class="text-muted">Dễ</small>
+                        </div>
+                        <p class="mb-1">Tính hiệu của hai số</p>
+                    </a>
+                    <a href="/problems/3" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">Bài tập 3</h6>
+                            <small class="text-muted">Dễ</small>
+                        </div>
+                        <p class="mb-1">Tính tích của hai số</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- contentFor('scripts') %>
+<script>
+    // Khởi tạo code mẫu
+    editor.setValue(`function sum(a, b) {
+    // Viết code của bạn ở đây
+    return 0;
+}`);
+
+    // Thiết lập ngôn ngữ mặc định
+    monaco.editor.setModelLanguage(editor.getModel(), 'javascript');
+</script> 

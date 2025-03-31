@@ -1,0 +1,160 @@
+<%- contentFor('body') %>
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>Bảng xếp hạng</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Tìm kiếm người dùng...">
+            <button class="btn btn-outline-secondary" type="button">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 50px">#</th>
+                        <th>Người dùng</th>
+                        <th>Điểm</th>
+                        <th>Bài đã giải</th>
+                        <th>Huy hiệu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(let i = 1; i <= 10; i++) { %>
+                        <tr class="<%= i === 3 ? 'leaderboard-row current-user' : '' %>">
+                            <td>
+                                <% if(i <= 3) { %>
+                                    <i class="fas fa-medal text-warning"></i>
+                                <% } else { %>
+                                    <%= i %>
+                                <% } %>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Avatar">
+                                    <div>
+                                        <div class="fw-bold">Người dùng <%= i %></div>
+                                        <small class="text-muted">@user<%= i %></small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="badge bg-primary"><%= 1000 - i * 50 %> điểm</span>
+                            </td>
+                            <td>
+                                <%= 20 + i * 5 %> bài
+                            </td>
+                            <td>
+                                <div class="d-flex gap-1">
+                                    <% if(i <= 3) { %>
+                                        <span class="badge bg-warning" data-bs-toggle="tooltip" title="Top <%= i %>">
+                                            <i class="fas fa-trophy"></i>
+                                        </span>
+                                    <% } %>
+                                    <% if(i % 2 === 0) { %>
+                                        <span class="badge bg-info" data-bs-toggle="tooltip" title="Giải 10 bài">
+                                            <i class="fas fa-medal"></i>
+                                        </span>
+                                    <% } %>
+                                    <% if(i % 3 === 0) { %>
+                                        <span class="badge bg-success" data-bs-toggle="tooltip" title="Giải 5 bài khó">
+                                            <i class="fas fa-star"></i>
+                                        </span>
+                                    <% } %>
+                                </div>
+                            </td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+
+        <nav aria-label="Page navigation" class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Top ngôn ngữ</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fab fa-js text-warning"></i> JavaScript
+                        </div>
+                        <span class="badge bg-primary rounded-pill">45%</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fab fa-python text-info"></i> Python
+                        </div>
+                        <span class="badge bg-primary rounded-pill">30%</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fab fa-java text-danger"></i> Java
+                        </div>
+                        <span class="badge bg-primary rounded-pill">25%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Top độ khó</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-circle text-success"></i> Dễ
+                        </div>
+                        <span class="badge bg-primary rounded-pill">60%</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-circle text-warning"></i> Trung bình
+                        </div>
+                        <span class="badge bg-primary rounded-pill">30%</span>
+                    </div>
+                    <div class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="fas fa-circle text-danger"></i> Khó
+                        </div>
+                        <span class="badge bg-primary rounded-pill">10%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
