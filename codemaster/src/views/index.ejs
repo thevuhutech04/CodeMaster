@@ -1,0 +1,93 @@
+<%- contentFor('body') %>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Chào mừng đến với CodeMaster</h2>
+                <p class="card-text">
+                    CodeMaster là nền tảng học lập trình trực tuyến, giúp bạn rèn luyện kỹ năng lập trình
+                    thông qua việc giải quyết các bài tập thực tế.
+                </p>
+                <a href="/problems" class="btn btn-primary">
+                    <i class="fas fa-code"></i> Bắt đầu luyện tập
+                </a>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Bài tập mới nhất</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <% for(let i = 1; i <= 5; i++) { %>
+                        <a href="/problems/<%= i %>" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h6 class="mb-1">Bài tập <%= i %></h6>
+                                <small class="text-muted">3 ngày trước</small>
+                            </div>
+                            <p class="mb-1">Mô tả ngắn về bài tập <%= i %></p>
+                            <small>
+                                <span class="badge bg-success">Dễ</span>
+                                <span class="badge bg-info">JavaScript</span>
+                            </small>
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Bảng xếp hạng</h5>
+            </div>
+            <div class="card-body">
+                <div class="list-group">
+                    <% for(let i = 1; i <= 5; i++) { %>
+                        <div class="list-group-item">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar me-3">
+                                    <%= i %>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Người dùng <%= i %></h6>
+                                    <small class="text-muted"><%= 1000 - i * 100 %> điểm</small>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="text-center mt-3">
+                    <a href="/leaderboard" class="btn btn-outline-primary btn-sm">
+                        Xem tất cả
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Thống kê</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="fas fa-users"></i> Tổng số người dùng: 1,234
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-code"></i> Tổng số bài tập: 50
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle"></i> Bài đã giải: 1,567
+                    </li>
+                    <li>
+                        <i class="fas fa-trophy"></i> Người dùng đạt huy hiệu: 89
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div> 

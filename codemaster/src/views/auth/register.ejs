@@ -1,0 +1,69 @@
+<%- contentFor('body') %>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="mb-0">Đăng ký tài khoản</h4>
+            </div>
+            <div class="card-body">
+                <form action="/auth/register" method="POST">
+                    <div class="mb-3">
+                        <label for="hoTen" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="hoTen" name="hoTen" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="matKhau" class="form-label">Mật khẩu</label>
+                        <input type="password" class="form-control" id="matKhau" name="matKhau" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="xacNhanMatKhau" class="form-label">Xác nhận mật khẩu</label>
+                        <input type="password" class="form-control" id="xacNhanMatKhau" name="xacNhanMatKhau" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="ngaySinh" class="form-label">Ngày sinh</label>
+                        <input type="date" class="form-control" id="ngaySinh" name="ngaySinh" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gioiTinh" class="form-label">Giới tính</label>
+                        <select class="form-select" id="gioiTinh" name="gioiTinh" required>
+                            <option value="">Chọn giới tính</option>
+                            <option value="Nam">Nam</option>
+                            <option value="Nu">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="soDienThoai" class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-control" id="soDienThoai" name="soDienThoai" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="diaChi" class="form-label">Địa chỉ</label>
+                        <textarea class="form-control" id="diaChi" name="diaChi" rows="3" required></textarea>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="dieuKhoan" name="dieuKhoan" required>
+                        <label class="form-check-label" for="dieuKhoan">
+                            Tôi đồng ý với <a href="#">điều khoản sử dụng</a>
+                        </label>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Đăng ký
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-3">
+                    <p class="mb-0">
+                        Đã có tài khoản? 
+                        <a href="/auth/login">Đăng nhập</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

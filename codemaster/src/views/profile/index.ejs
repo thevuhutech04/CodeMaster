@@ -1,0 +1,212 @@
+<%- contentFor('body') %>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body text-center">
+                <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Avatar">
+                <h4 class="card-title mb-0"><%= user.hoTen %></h4>
+                <p class="text-muted mb-3">@<%= user.tenDangNhap %></p>
+                <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#avatarModal">
+                    <i class="fas fa-camera"></i> Đổi ảnh đại diện
+                </button>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Thống kê</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="fas fa-code"></i> Bài đã giải: 25
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-check-circle"></i> Bài đúng: 20
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-times-circle"></i> Bài sai: 5
+                    </li>
+                    <li class="mb-2">
+                        <i class="fas fa-star"></i> Điểm: 850
+                    </li>
+                    <li>
+                        <i class="fas fa-trophy"></i> Huy hiệu: 3
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Huy hiệu</h5>
+            </div>
+            <div class="card-body">
+                <div class="d-flex flex-wrap gap-2">
+                    <div class="badge bg-warning p-2" data-bs-toggle="tooltip" title="Giải 10 bài tập">
+                        <i class="fas fa-medal fa-2x"></i>
+                    </div>
+                    <div class="badge bg-info p-2" data-bs-toggle="tooltip" title="Giải 5 bài khó">
+                        <i class="fas fa-trophy fa-2x"></i>
+                    </div>
+                    <div class="badge bg-success p-2" data-bs-toggle="tooltip" title="Top 10 bảng xếp hạng">
+                        <i class="fas fa-crown fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Thông tin cá nhân</h5>
+                <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                    <i class="fas fa-edit"></i> Chỉnh sửa
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <strong>Email:</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <%= user.email %>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <strong>Ngày sinh:</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <%= user.ngaySinh %>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <strong>Giới tính:</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <%= user.gioiTinh %>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-3">
+                        <strong>Số điện thoại:</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <%= user.soDienThoai %>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <strong>Địa chỉ:</strong>
+                    </div>
+                    <div class="col-sm-9">
+                        <%= user.diaChi %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Lịch sử bài tập</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Bài tập</th>
+                                <th>Ngôn ngữ</th>
+                                <th>Kết quả</th>
+                                <th>Thời gian</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 1; i <= 5; i++) { %>
+                                <tr>
+                                    <td>Bài tập <%= i %></td>
+                                    <td>JavaScript</td>
+                                    <td>
+                                        <span class="badge bg-success">Đúng</span>
+                                    </td>
+                                    <td>2024-03-<%= i %></td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Chỉnh sửa thông tin -->
+<div class="modal fade" id="editProfileModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chỉnh sửa thông tin</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile/update" method="POST">
+                    <div class="mb-3">
+                        <label for="editHoTen" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="editHoTen" name="hoTen" value="<%= user.hoTen %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editNgaySinh" class="form-label">Ngày sinh</label>
+                        <input type="date" class="form-control" id="editNgaySinh" name="ngaySinh" value="<%= user.ngaySinh %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editGioiTinh" class="form-label">Giới tính</label>
+                        <select class="form-select" id="editGioiTinh" name="gioiTinh" required>
+                            <option value="Nam" <%= user.gioiTinh === 'Nam' ? 'selected' : '' %>>Nam</option>
+                            <option value="Nu" <%= user.gioiTinh === 'Nu' ? 'selected' : '' %>>Nữ</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editSoDienThoai" class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-control" id="editSoDienThoai" name="soDienThoai" value="<%= user.soDienThoai %>" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDiaChi" class="form-label">Địa chỉ</label>
+                        <textarea class="form-control" id="editDiaChi" name="diaChi" rows="3" required><%= user.diaChi %></textarea>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Đổi ảnh đại diện -->
+<div class="modal fade" id="avatarModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Đổi ảnh đại diện</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/profile/avatar" method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="avatar" class="form-label">Chọn ảnh</label>
+                        <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" required>
+                    </div>
+                    <div class="text-end">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="submit" class="btn btn-primary">Tải lên</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
